@@ -1,27 +1,51 @@
 'use strict';
-require('babel/polyfill');
+const app = require('app');
+const BrowserWindow = require('browser-window');
 
-import app from 'app';
-import BrowserWindow from 'browser-window';
-import crashReporter from 'crash-reporter';
-import Menu from 'menu';
-import appMenu from './browser/menu/appMenu';
+// report crashes to the Electron project
+// require('crash-reporter').start();
 
-let mainWindow = null;
-if(process.env.NODE_ENV === 'develop'){
-  // crashReporter.start();
-  // appMenu.append(devMenu);
+// adds debug features like hotkeys for triggering dev tools and reload
+require('electron-debug')();
+
+// prevent window being GC'd
+let mainWindow;
+
+function createMainWindow() {
+  const win = new BrowserWindow({
+    width: 600,
+    height: 400,
+    resizable: true,
+    transparent: true,
+    frame: true,
+    // "always-on-top": true,
+  });
+  // win.maximize();
+
+  win.loadUrl(`file://${__dirname}/renderer/index.html`);
+  win.on('closed', onClosed);
+
+  return win;
 }
 
-app.on('window-all-closed', () => {
-  app.quit();
+function onClosed() {
+  // deref the window
+  // for multiple windows store them in an array
+  mainWindow = null;
+}
+
+app.on('window-all-closed', function () {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
 });
 
-app.on('ready', () => {
-  //Menu.setApplicationMenu(appMenu);
-  mainWindow = new BrowserWindow({
-    width: 580,
-    height: 365
-  });
-  mainWindow.loadUrl('file://' + __dirname + '/renderer/index.html');
+app.on('activate-with-no-open-windows', function () {
+  if (!mainWindow) {
+    mainWindow = createMainWindow();
+  }
+});
+
+app.on('ready', function () {
+  mainWindow = createMainWindow();
 });
