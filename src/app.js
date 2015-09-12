@@ -9,8 +9,8 @@ import appMenu from './browser/menu/appMenu';
 
 let mainWindow = null;
 if(process.env.NODE_ENV === 'develop'){
-  crashReporter.start();
-  //appMenu.append(devMenu);
+  // crashReporter.start();
+  // appMenu.append(devMenu);
 }
 
 app.on('window-all-closed', () => {
@@ -25,4 +25,3 @@ app.on('ready', () => {
   });
   mainWindow.loadUrl('file://' + __dirname + '/renderer/index.html');
 });
-
