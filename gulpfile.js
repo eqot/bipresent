@@ -184,6 +184,7 @@ gulp.task('clean', function (done) {
 
 gulp.task('serve', ['inject:css', 'compile:scripts:watch', 'compile:styles', 'misc'], function () {
   var electron = electronServer.create();
+  electron.log = function(){};
   electron.start();
   gulp.watch(['bower.json', srcDir + '/renderer/index.html'], ['inject:css']);
   gulp.watch([serveDir + '/app.js', serveDir + '/browser/**/*.js'], electron.restart);
@@ -208,4 +209,3 @@ gulp.task('boilerplate', function () {
 });
 
 gulp.task('default', ['build']);
-
