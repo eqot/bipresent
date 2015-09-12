@@ -24,6 +24,7 @@
     "browserify": "^11.1.0",
     "del": "^2.0.2",
     "electron-connect": "^0.3.0",
+    "electron-debug": "^0.2.0",
     "electron-packager": "^5.1.0",
     "electron-prebuilt": "^0.32.1",
     "gulp": "^3.8.11",
