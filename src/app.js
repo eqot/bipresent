@@ -18,7 +18,7 @@ function createMainWindow() {
     resizable: true,
     transparent: true,
     frame: true,
-    // "always-on-top": true,
+    "always-on-top": true,
   });
   // win.maximize();
 
