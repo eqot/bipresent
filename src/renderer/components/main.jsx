@@ -6,7 +6,7 @@ import {ReactTicker} from './react-ticker';
 export class Main extends React.Component {
   render() {
     return (
-      <ReactTicker>
+      <ReactTicker y="10%">
         テスト
       </ReactTicker>
     );
