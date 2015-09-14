@@ -24,7 +24,7 @@ export class ReactTicker extends React.Component {
     this.state = {x: '100%'};
     setTimeout(() => {
       this.setState({x: '-100%'});
-    }, 0);
+    }, 100);
   }
 
   render () {
@@ -32,7 +32,7 @@ export class ReactTicker extends React.Component {
     styles.left = this.state.x;
 
     return (
-      <div style={styles}>
+      <div style={styles} key={this.props.key}>
         {this.props.children}
       </div>
     );
