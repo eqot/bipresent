@@ -4,13 +4,16 @@ import React from 'react';
 var _ = require('lodash');
 
 export class ReactTicker extends React.Component {
+  FONT_SIZE = 60;
+
   styles = {
     text: {
       whiteSpace: 'nowrap',
-      fontSize: '30px',
+      fontSize: this.FONT_SIZE + 'px',
+      fontWeight: 'bold',
 
-      color: '#f0f0ff',
-      textShadow: '1px 1px 3px #000000',
+      color: '#ffffff',
+      textShadow: '1px 1px 2px #000000, -1px -1px 2px #000000, 1px -1px 2px #000000, -1px 1px 2px #000000',
 
       position: 'absolute',
       top: this.props.y,
