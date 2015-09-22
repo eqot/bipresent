@@ -34,7 +34,7 @@ export class ReactMessage extends React.Component {
   onReceive(message) {
     // console.log('received: ' + message);
 
-    var messages = this.state.messages.concat([message]);
+    var messages = this.state.messages.concat([message.text]);
     this.setState({
       messages: messages
     });
