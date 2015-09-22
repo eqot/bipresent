@@ -4,6 +4,8 @@ import React from 'react';
 import {ReactTicker} from './react-ticker';
 
 export class ReactMessage extends React.Component {
+  LINE_HEIGHT = 80;
+
   constructor(props) {
     super(props);
 
@@ -51,13 +53,13 @@ export class ReactMessage extends React.Component {
     return (
       <div>
         <button onClick={this.onClick.bind(this)}>Send</button>
-        {this.state.messages.map(this.renderChild)}
+        {this.state.messages.map(this.renderChild.bind(this))}
       </div>
     );
   }
 
   renderChild(child, index) {
-    var y = Math.random() * 30.0 + '%';
+    var y = (index & 7) * this.LINE_HEIGHT + 'px';
 
     return (
       <ReactTicker y={y} key={index}>
