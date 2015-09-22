@@ -24,10 +24,14 @@ export class ReactTicker extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {x: '100%'};
+    this.state = {x: '100%', shouldRender: true};
     setTimeout(() => {
-      this.setState({x: '-100%'});
+      this.setState({x: '-100%', shouldRender: false});
     }, 100);
+  }
+
+  shouldComponentUpdate () {
+    return this.state.shouldRender;
   }
 
   render () {
