@@ -8,19 +8,20 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- endbuild -->
-
-    <script>__REACT_DEVTOOLS_GLOBAL_HOOK__ = {};</script>
   </head>
 
   <body>
     <div id="app"></div>
-
-    <!-- build:remove-->
-    <script>require('electron-connect').client.create().log = function(){}</script>
-    <!-- endbuild -->
-
-    <script src="https://eq-pubsub.herokuapp.com/socket.io/socket.io.js"></script>
-    <script src="https://eq-pubsub.herokuapp.com/javascripts/pubsub.js"></script>
-    <script src="bootstrap.js"></script>
   </body>
+
+  <!-- build:remove-->
+  <script>
+    __REACT_DEVTOOLS_GLOBAL_HOOK__ = {};
+    require('electron-connect').client.create().log = function(){}
+  </script>
+  <!-- endbuild -->
+
+  <script src="https://eq-pubsub.herokuapp.com/socket.io/socket.io.js"></script>
+  <script src="https://eq-pubsub.herokuapp.com/javascripts/pubsub.js"></script>
+  <script src="bootstrap.js"></script>
 </html>
