@@ -7,7 +7,8 @@ export class ReactMessage extends React.Component {
   constructor(props) {
     super(props);
 
-    pubsub.connect(this.onConnect.bind(this));
+    this.pubsub = new Pubsub('bipresent', 'https://eq-pubsub.herokuapp.com/');
+    this.pubsub.subscribe(this.onReceive.bind(this));
 
     this.state = {
       index: 0,
@@ -28,12 +29,6 @@ export class ReactMessage extends React.Component {
     }, 1000);
   }
 
-  onConnect() {
-    // console.log('connected');
-
-    pubsub.subscribe('bipresent', this.onReceive.bind(this));
-  }
-
   onReceive(message) {
     // console.log('received: ' + message);
 
@@ -45,7 +40,7 @@ export class ReactMessage extends React.Component {
   }
 
   onClick() {
-    pubsub.publish('bipresent', 'いいね!');
+    this.pubsub.publish('いいね!');
   }
 
   render() {
