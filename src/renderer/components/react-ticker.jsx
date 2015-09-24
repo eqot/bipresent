@@ -38,9 +38,26 @@ export class ReactTicker extends React.Component {
     var styles = _.cloneDeep(this.styles.text);
     styles.left = this.state.x;
 
+    var emojiId = Pubsub.getEmojiId(this.props.children);
+    if (emojiId) {
+      return this.renderEmoji(emojiId, styles);
+    } else {
+      return this.renderChild(styles);
+    }
+  }
+
+  renderChild (styles) {
     return (
       <div style={styles} key={this.props.key}>
         {this.props.children}
+      </div>
+    );
+  }
+
+  renderEmoji (emojiId, styles) {
+    return (
+      <div style={styles} key={this.props.key}>
+        <span className={'fa ' + emojiId}></span>
       </div>
     );
   }
