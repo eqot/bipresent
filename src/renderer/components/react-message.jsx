@@ -3,6 +3,12 @@
 import React from 'react';
 import {ReactTicker} from './react-ticker';
 
+const remote = require('remote');
+
+const Log4js = remote.require('log4js');
+Log4js.configure('log-config.json');
+const accessLogger = Log4js.getLogger('access');
+
 export class ReactMessage extends React.Component {
   LINE_HEIGHT = 80;
 
@@ -39,6 +45,7 @@ export class ReactMessage extends React.Component {
       messages: messages
     });
 
+    accessLogger.info(message.text);
   }
 
   render() {
