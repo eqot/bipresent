@@ -55,6 +55,11 @@ function createMenu() {
           label: 'Full screen',
           accelerator: 'Command+F',
           click: function() { mainWindow.maximize(); }
+        },
+        {
+          label: 'Transparent',
+          accelerator: 'Command+T',
+          click: function() { mainWindow.webContents.send('transparent'); }
         }
       ]
     }
