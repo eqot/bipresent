@@ -1,6 +1,7 @@
 'use strict';
 const app = require('app');
 const BrowserWindow = require('browser-window');
+const Menu = require('menu');
 
 // report crashes to the Electron project
 // require('crash-reporter').start();
@@ -35,6 +36,24 @@ function onClosed() {
   mainWindow = null;
 }
 
+function createMenu() {
+  var template = [
+    {
+      label: require('app').getName(),
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: function() { app.quit(); }
+        }
+      ]
+    }
+  ];
+
+  var menu = Menu.buildFromTemplate(template);
+  Menu.setApplicationMenu(menu);
+}
+
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -49,4 +68,5 @@ app.on('activate-with-no-open-windows', function () {
 
 app.on('ready', function () {
   mainWindow = createMainWindow();
+  createMenu();
 });
