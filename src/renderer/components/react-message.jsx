@@ -41,10 +41,6 @@ export class ReactMessage extends React.Component {
 
   }
 
-  onClick() {
-    this.pubsub.publish('いいね!');
-  }
-
   render() {
     if (this.state.messages.length === 0) {
       return null;
@@ -52,7 +48,6 @@ export class ReactMessage extends React.Component {
 
     return (
       <div>
-        <button onClick={this.onClick.bind(this)}>Send</button>
         {this.state.messages.map(this.renderChild.bind(this))}
       </div>
     );
