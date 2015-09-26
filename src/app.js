@@ -18,7 +18,8 @@ function createMainWindow() {
     resizable: true,
     transparent: true,
     frame: true,
-    "always-on-top": true,
+    // 'title-bar-style': 'hidden',
+    'always-on-top': true
   });
   // win.maximize();
 
