@@ -48,11 +48,11 @@ export class ReactTicker extends React.Component {
   }
 
   renderChild () {
-    return {this.props.children};
+    return <div>{this.props.children}</div>
   }
 
   renderEmoji (emojiId) {
-    return <span className={'fa ' + emojiId}></span>;
+    return <span className={'fa ' + emojiId}></span>
   }
 }
 
