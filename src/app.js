@@ -20,7 +20,7 @@ function createMainWindow() {
     transparent: true,
     frame: true,
     // 'title-bar-style': 'hidden',
-    'always-on-top': true
+    'always-on-top': false
   });
   // win.maximize();
 
@@ -54,7 +54,15 @@ function createMenu() {
         {
           label: 'Full screen',
           accelerator: 'Command+F',
-          click: function() { mainWindow.maximize(); }
+          click: function() {
+            if (mainWindow.isMaximized()) {
+              mainWindow.unmaximize();
+              mainWindow.setAlwaysOnTop(false);
+            } else {
+              mainWindow.maximize();
+              mainWindow.setAlwaysOnTop(true);
+            }
+          }
         },
         {
           label: 'Transparent',
