@@ -22,7 +22,7 @@ export class ReactMessage extends React.Component {
         return;
       }
 
-      var messages = this.state.messages.concat([this.props.pools[this.state.index]]);
+      var messages = this.state.messages.concat(this.props.pools[this.state.index]);
       this.setState({
         messages: messages
       });
