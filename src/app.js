@@ -47,6 +47,16 @@ function createMenu() {
           click: function() { app.quit(); }
         }
       ]
+    },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Full screen',
+          accelerator: 'Command+F',
+          click: function() { mainWindow.maximize(); }
+        }
+      ]
     }
   ];
 
