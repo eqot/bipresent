@@ -45,7 +45,7 @@ export class ReactMessage extends React.Component {
       messages: messages
     });
 
-    accessLogger.info(message.text);
+    accessLogger.info(message.id, message.text);
   }
 
   render() {
