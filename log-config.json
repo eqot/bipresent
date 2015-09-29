@@ -4,7 +4,7 @@
       "type":     "dateFile",
       "category": "access",
       "filename": "logs/access.log",
-      "pattern":  "-yyyy-MM-dd-hh-mm"
+      "pattern":  "-yyyy-MM-dd"
     }
   ]
 }
