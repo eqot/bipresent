@@ -28,7 +28,7 @@ export class ReactMessage extends React.Component {
 
   onReceive(data) {
     this.addMessage(data.text);
-    accessLogger.info(message.id, message);
+    accessLogger.info(data.id, data.text);
   }
 
   onKeyDown(e) {
