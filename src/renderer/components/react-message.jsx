@@ -18,34 +18,35 @@ export class ReactMessage extends React.Component {
     this.pubsub = new Pubsub('bipresent', 'https://eq-pubsub.herokuapp.com/');
     this.pubsub.subscribe(this.onReceive.bind(this));
 
+    document.body.addEventListener('keydown', this.onKeyDown.bind(this));
+
     this.state = {
       index: 0,
       messages: []
     };
-    var timer = setInterval(() => {
-      if (this.state.index >= this.props.pools.length) {
-        clearInterval(timer);
-        return;
-      }
-
-      var messages = this.state.messages.concat(this.props.pools[this.state.index]);
-      this.setState({
-        messages: messages
-      });
-
-      this.setState({index: this.state.index + 1});
-    }, 1000);
   }
 
-  onReceive(message) {
-    // console.log('received: ' + message);
+  onReceive(data) {
+    this.addMessage(data.text);
+    accessLogger.info(message.id, message);
+  }
 
-    var messages = this.state.messages.concat([message.text]);
+  onKeyDown(e) {
+    var emojiId = Pubsub.KEY_EMOJI_MAP[e.keyCode];
+    if (emojiId) {
+      this.addMessage(emojiId);
+
+      e.preventDefault();
+
+      return false;
+    }
+  }
+
+  addMessage(message) {
+    var messages = this.state.messages.concat(message);
     this.setState({
       messages: messages
     });
-
-    accessLogger.info(message.id, message.text);
   }
 
   render() {
@@ -69,16 +70,4 @@ export class ReactMessage extends React.Component {
       </ReactTicker>
     );
   }
-}
-
-ReactMessage.defaultProps = {
-  pools: [
-    'テスト',
-    'キターーーッ',
-    'キターーーッ',
-    'キターーーッ',
-    'foo',
-    'bar',
-    'baz'
-  ]
 }
