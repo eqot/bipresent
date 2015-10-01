@@ -24,6 +24,8 @@ export class ReactMessage extends React.Component {
       index: 0,
       messages: []
     };
+
+    this.timer = null;
   }
 
   onReceive(data) {
@@ -47,6 +49,19 @@ export class ReactMessage extends React.Component {
     this.setState({
       messages: messages
     });
+
+    if (this.timer) {
+      clearTimeout(this.timer);
+    }
+
+    var self = this;
+    this.timer = setTimeout(() => {
+      this.setState({
+        messages: []
+      });
+
+      self.timer = null;
+    }, 9000);
   }
 
   render() {
