@@ -93,3 +93,15 @@ app.on('ready', function () {
   mainWindow = createMainWindow();
   createMenu();
 });
+
+// Workaround for heroku to prevent sleeping process.
+const http = require('http');
+function accessHost() {
+  http.get('http://eq-pubsub.herokuapp.com/')
+    .on('error', function (e) {
+      console.log(e.message);
+    });
+}
+
+accessHost();
+setInterval(accessHost, 1000 * 60 * 10); // 10min
