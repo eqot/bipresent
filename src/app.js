@@ -95,13 +95,23 @@ app.on('ready', function () {
 });
 
 // Workaround for heroku to prevent sleeping process.
+
+const url = require('url');
 const http = require('http');
+const HttpProxyAgent = require('http-proxy-agent');
+
+var opts = url.parse('http://eq-pubsub.herokuapp.com/');
+if (process.env.http_proxy) {
+  opts.agent = new HttpProxyAgent(process.env.http_proxy);
+}
+
 function accessHost() {
-  http.get('http://eq-pubsub.herokuapp.com/')
-    .on('error', function (e) {
-      console.log(e.message);
-    });
+  http.get(opts, function (res) {
+    // console.log(res.headers);
+  }).on('error', function (e) {
+    console.log(e.message);
+  });
 }
 
 accessHost();
-setInterval(accessHost, 1000 * 60 * 10); // 10min
+setInterval(accessHost, 1000 * 60 * 1); // 1min
