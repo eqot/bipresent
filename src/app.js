@@ -67,7 +67,12 @@ function createMenu() {
         {
           label: 'Transparent',
           accelerator: 'Command+T',
-          click: function() { mainWindow.webContents.send('transparent'); }
+          click: function() { mainWindow.webContents.send('toggle-transparent'); }
+        },
+        {
+          label: 'Information',
+          accelerator: 'Command+I',
+          click: function() { mainWindow.webContents.send('toggle-info'); }
         }
       ]
     }

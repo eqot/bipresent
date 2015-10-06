@@ -12,3 +12,11 @@ body {
     background-color: rgba(128, 128, 128, 0);
   }
 }
+
+div.info {
+  visibility: hidden;
+
+  body.info-visible & {
+    visibility: visible;
+  }
+}

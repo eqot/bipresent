@@ -12,6 +12,21 @@ const accessLogger = Log4js.getLogger('access');
 export class ReactMessage extends React.Component {
   LINE_HEIGHT = 80;
 
+  styles = {
+    text: {
+      whiteSpace: 'nowrap',
+      fontSize: '48px',
+      fontWeight: 'bold',
+
+      color: '#ffffff',
+      textShadow: '1px 1px 2px #000000, -1px -1px 2px #000000, 1px -1px 2px #000000, -1px 1px 2px #000000',
+
+      position: 'absolute',
+      top: '-15px',
+      right: '15px'
+    }
+  }
+
   constructor(props) {
     super(props);
 
@@ -65,13 +80,13 @@ export class ReactMessage extends React.Component {
   }
 
   render() {
-    if (this.state.messages.length === 0) {
-      return null;
-    }
-
     return (
       <div>
         {this.state.messages.map(this.renderChild.bind(this))}
+
+        <div style={this.styles.text} className="info">
+          {this.props.info}
+        </div>
       </div>
     );
   }
