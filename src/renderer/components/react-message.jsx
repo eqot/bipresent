@@ -22,8 +22,8 @@ export class ReactMessage extends React.Component {
       textShadow: '1px 1px 2px #000000, -1px -1px 2px #000000, 1px -1px 2px #000000, -1px 1px 2px #000000',
 
       position: 'absolute',
-      top: '-15px',
-      right: '15px'
+      top: '-5px',
+      right: '10px'
     }
   }
 

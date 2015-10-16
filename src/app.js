@@ -19,7 +19,7 @@ function createMainWindow() {
     resizable: true,
     transparent: true,
     frame: true,
-    // 'title-bar-style': 'hidden',
+    'title-bar-style': 'hidden',
     'always-on-top': false
   });
   // win.maximize();
