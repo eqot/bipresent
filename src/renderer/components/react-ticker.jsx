@@ -17,7 +17,7 @@ export class ReactTicker extends React.Component {
 
       position: 'absolute',
       top: this.props.y,
-      transition: 'all 8s linear'
+      transition: 'all 30s linear'
     }
   }
 
@@ -26,7 +26,7 @@ export class ReactTicker extends React.Component {
 
     this.state = {x: '100%', shouldRender: true};
     setTimeout(() => {
-      this.setState({x: '-100%', shouldRender: false});
+      this.setState({x: '-200%', shouldRender: false});
     }, 100);
   }
 

@@ -76,7 +76,7 @@ export class ReactMessage extends React.Component {
       });
 
       self.timer = null;
-    }, 9000);
+    }, 31000);
   }
 
   render() {
